@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">VTFC-master</string>
+    <string name="correoPlaceholder">davidmangas@gmail.com</string>
+    <string name="passwordPlaceHolder">*****</string>
+    <string name="buttonLogin">Log In</string>
+    <string name="passwordShow">Password</string>
+    <string name="map">Map</string>
+    <string name="incidencies">Incidencies</string>
+    <string name="guardarFab">Guardar Favoritos</string>
+
+</resources>
