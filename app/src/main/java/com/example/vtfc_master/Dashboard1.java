@@ -304,12 +304,17 @@ public class Dashboard1 extends AppCompatActivity implements OnMapReadyCallback 
         TextView descripcion = dialog.findViewById(R.id.textViewDesc);
         ImageButton favoritoBtn = dialog.findViewById(R.id.imagenStar);
         ImageView imagenObjeto = dialog.findViewById(R.id.imagenObjeto);
+        TextView textoblanco = dialog.findViewById(R.id.textoblanco);
+        TextView textoblanco2 = dialog.findViewById(R.id.textoblanco2);
+        TextView textoblanco3 = dialog.findViewById(R.id.textoblanco3);
 
         if (tag instanceof Camara) {
             Camara camara = (Camara) tag;
             titulo.setText(camara.getCameraName());
             descripcion.setText(camara.getRoad());
-            Picasso.get().load(camara.getUrlImage()).into(imagenObjeto);
+            String url = camara.getUrlImage().replace("http://", "https://");
+            Picasso.get().load(url).into(imagenObjeto);
+            Log.d("mostrarDialogo", "URL: " + url);
 
             boolean esFavorito = camara.isFavoritoCam();
             favoritoBtn.setImageResource(esFavorito ? android.R.drawable.btn_star_big_on : android.R.drawable.btn_star_big_off);
@@ -332,8 +337,13 @@ public class Dashboard1 extends AppCompatActivity implements OnMapReadyCallback 
             Incidencia incidencia = (Incidencia) tag;
             titulo.setText(incidencia.getIncidenceName());
             descripcion.setText(incidencia.getCityTown());
-
+            textoblanco.setText(incidencia.getCause());
+            textoblanco2.setText(incidencia.getPkStart());
+            textoblanco3.setText(incidencia.getEndDate());
             boolean esFavorito = incidencia.isFavorito();
+
+
+
             favoritoBtn.setImageResource(esFavorito ? android.R.drawable.btn_star_big_on : android.R.drawable.btn_star_big_off);
 
             favoritoBtn.setOnClickListener(v -> {

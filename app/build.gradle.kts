@@ -38,6 +38,8 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.play.services.maps)
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -45,4 +47,5 @@ dependencies {
     implementation("com.google.android.gms:play-services-maps:18.0.2")
     implementation("com.google.code.gson:gson:2.8.9")
     implementation("com.squareup.picasso:picasso:2.8")
+
 }
