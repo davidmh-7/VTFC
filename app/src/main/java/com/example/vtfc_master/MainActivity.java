@@ -1,6 +1,7 @@
 package com.example.vtfc_master;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -66,5 +67,16 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         });
+
+        SharedPreferences sharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE);
+        boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
+
+        if (isLoggedIn) {
+            // Si hay sesión activa, redirigir al Dashboard
+            Intent intent = new Intent(this, Dashboard1.class);
+            startActivity(intent);
+            finish();
+        }
+
     }
 }

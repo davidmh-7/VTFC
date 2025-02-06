@@ -88,20 +88,26 @@ public class Dashboard1 extends AppCompatActivity implements OnMapReadyCallback 
         img.setOnClickListener(v -> {
             SharedPreferences sharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.clear();
+            editor.clear();  // Elimina toda la información guardada
             editor.apply();
+
 
             Intent intent = new Intent(Dashboard1.this, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             Toast.makeText(Dashboard1.this, "Se ha cerrado su cuenta", Toast.LENGTH_SHORT).show();
             finish();
+
         });
 
 
         //Gestion de camaras
         new FetchCamarasTask().execute("https://apitraficopendataeuskadi.onrender.com/camaras");
         new FetchIncidenciasTask().execute("https://apitraficopendataeuskadi.onrender.com/incidencia");
+        SharedPreferences sharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("isLoggedIn", true);
+        editor.apply();
 
     }
 
@@ -363,4 +369,11 @@ public class Dashboard1 extends AppCompatActivity implements OnMapReadyCallback 
 
         dialog.show();
     }
+
+
+
+
+
+
+
 }
